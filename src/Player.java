@@ -15,6 +15,12 @@ public class Player {
             health += (100-health)/2;
         }
     }
+    public int getHealth() {
+        return health;
+    }
+    public void setHealth(int zx) {
+        health += zx;
+    }
     public void playerInfo() {
         System.out.println( Color.RED + "[Health: " + health + "%] ");
         if (health <= 10) {

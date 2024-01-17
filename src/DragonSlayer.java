@@ -29,7 +29,7 @@ public class DragonSlayer {
         }
     }
     public void easy() {
-
+        Room roomies = new Room(playa);
     }
     public void hard() {
 
