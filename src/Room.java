@@ -1,20 +1,22 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Room {
-    private int roomNumber;
+    public int roomNumber;
     private boolean searched;
     private Scanner scan;
     private Player player;
+    private String mode;
+    public String x;
 
-    public Room(Player player) {
+    public Room(Player player, String mode) {
         roomNumber = 1;
         searched = false;
         scan = new Scanner(System.in);
         this.player = player;
+        this.mode = mode;
     }
     public void enterRoom() {
-        String x = "";
+        x = "";
         if (roomNumber == 1) {
             x = "the lair";
         } else if (roomNumber == 2) {
@@ -26,18 +28,10 @@ public class Room {
         } else if (roomNumber == 5) {
             x = "the room";
         }
-        System.out.println("You have entered the a room called, " + x);
-        fight();
+        System.out.println(Color.BLUE + "You have entered the a new room called, " + x + "." + Color.RESET);
+
     }
-
-    public void fight() {
-        if (roomNumber == 1) {
-
-        }
-    }
-
     public void searchRoom(){
-        if (searched == false) {
             int x = (int) (Math.random()*5 +1);
             if (x >= 4) {
                 System.out.println("You found a health pot!");
@@ -47,23 +41,11 @@ public class Room {
                     player.setHealth(player.getHealth() + (100 - player.getHealth())/2);
                 } else {
                     System.out.println("Great! Lets reserve it for later");
+                    player.sethealthPotStatus(true);
                 }
+            } else {
+                System.out.println("You found nothing!");
             }
-        }
-        searched = true;
-    }
-    public void dragonSpawn(){
-        int x = (int) (Math.random()*3 +1);
-        if (x == 1) {
-            Dragon dragon = new Dragon();
-        } else if (x == 2) {
-            Dragon dragon = new Dragon();
-            Dragon dragon1 = new Dragon();
-        } else if (x == 3) {
-            Dragon dragon = new Dragon();
-            Dragon dragon1 = new Dragon();
-            Dragon dragon2 = new Dragon();
-        }
     }
     public void killedDragon() {
         roomNumber +=1;

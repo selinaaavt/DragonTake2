@@ -4,23 +4,45 @@ public class Player {
     private int gold;
     private boolean healthPotStatus;
     private Sword sword;
+    public boolean alive;
 
     public Player(String name) {
         this.name = name;
         health = 100;
-
+        sword = new Sword();
+        alive = true;
     }
     public void checkForPot(){
         if (healthPotStatus) {
             health += (100-health)/2;
+            healthPotStatus = false;
+        } else {
+            System.out.println("You do not owe a health pot!");
         }
     }
     public int getHealth() {
         return health;
     }
     public void setHealth(int zx) {
-        health += zx;
+        health = zx;
     }
+    public void sethealthPotStatus(boolean s) {
+        healthPotStatus = s;
+    }
+    public Sword getSword() {
+        return sword;
+    }
+
+    public String getName() {
+        return name;
+    }
+    public void setGold(int x) {
+        gold += x;
+    }
+    public int getGold() {
+        return gold;
+    }
+
     public void playerInfo() {
         System.out.println( Color.RED + "[Health: " + health + "%] ");
         if (health <= 10) {

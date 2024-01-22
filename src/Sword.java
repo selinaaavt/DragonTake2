@@ -17,4 +17,7 @@ public class Sword {
     public int getDodge() {
         return dodge;
     }
+    public String swordInfo() {
+        return "attack: " + getAttack() + "\ndodge: " + getDodge();
+    }
 }

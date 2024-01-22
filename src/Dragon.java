@@ -1,9 +1,17 @@
+import java.util.Scanner;
+
 public class Dragon {
     private int level;
     private int health;
-    public Dragon() {
+    private boolean alive;
+    private Scanner scan;
+    private Player player;
+    public Dragon(Player player) {
         health = 100;
-        level = (int) (Math.random()*2 +1);
+        level = (int) (Math.random()*3 +1);
+        alive = true;
+        scan = new Scanner(System.in);
+        this.player = player;
     }
     public int getHealth() {
         return health;
@@ -17,8 +25,11 @@ public class Dragon {
     public void setLevel(int level) {
         this.level = level;
     }
-    public void fightDragon() {
-
+    public boolean isAlive() {
+        return alive;
+    }
+    public void setAlive(boolean trueOrFalse) {
+        alive = trueOrFalse;
     }
     public void dragonInfo() {
         System.out.println( Color.BLUE + "[Health: " + health + "%] ");
@@ -43,5 +54,6 @@ public class Dragon {
         } else {
             System.out.println("██████████ ");
         }
+        System.out.println(Color.PURPLE + "Dragon's level: " + level + Color.RESET);
     }
 }
