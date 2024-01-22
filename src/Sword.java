@@ -1,7 +1,7 @@
 public class Sword {
     private int attack;
     private int dodge;
-    public Sword() {
+    public Sword() { //starting stats
         attack = 10;
         dodge = 20;
     }
@@ -17,7 +17,7 @@ public class Sword {
     public int getDodge() {
         return dodge;
     }
-    public String swordInfo() {
-        return "attack: " + getAttack() + "\ndodge: " + getDodge();
+    public String swordInfo() { //prints out basic information of the sword
+        return "---Sword Info---\n" + "attack: " + getAttack() + "\ndodge: " + getDodge();
     }
 }

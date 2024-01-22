@@ -5,20 +5,26 @@ public class Player {
     private boolean healthPotStatus;
     private Sword sword;
     public boolean alive;
-
-    public Player(String name) {
+    public int score;
+    public static int topScoreForAllGames;
+    public Player(String name) { //starting stats
         this.name = name;
         health = 100;
         sword = new Sword();
         alive = true;
+        score = 0;
+        topScoreForAllGames =0;
     }
     public void checkForPot(){
-        if (healthPotStatus) {
+        if (healthPotStatus) { //if the player wants to use pot, we check if they have a pot in the first place
             health += (100-health)/2;
             healthPotStatus = false;
         } else {
             System.out.println("You do not owe a health pot!");
         }
+    }
+    public static int getTopScoreForAllGames() {
+        return topScoreForAllGames;
     }
     public int getHealth() {
         return health;
@@ -26,8 +32,8 @@ public class Player {
     public void setHealth(int zx) {
         health = zx;
     }
-    public void sethealthPotStatus(boolean s) {
-        healthPotStatus = s;
+    public void sethealthPotStatus(boolean trueOrFalse) {
+        healthPotStatus = trueOrFalse;
     }
     public Sword getSword() {
         return sword;
@@ -37,12 +43,28 @@ public class Player {
         return name;
     }
     public void setGold(int x) {
-        gold += x;
+        gold = x;
     }
     public int getGold() {
         return gold;
     }
-
+    public void setScore(int score) {
+        this.score = score;
+    }
+    public int getScore() {
+        return score;
+    }
+    public void determiningTopScore() {
+        if (score > topScoreForAllGames){
+            topScoreForAllGames = score;
+        }
+    }
+    public int attack() {
+        return ((int) (Math.random() * 10)) + 1 * getSword().getAttack();
+    }
+    public int hardAttack() {
+        return ((int) (Math.random() * 6)) + 1 * getSword().getAttack();
+    }
     public void playerInfo() {
         System.out.println( Color.RED + "[Health: " + health + "%] ");
         if (health <= 10) {

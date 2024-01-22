@@ -31,6 +31,12 @@ public class Dragon {
     public void setAlive(boolean trueOrFalse) {
         alive = trueOrFalse;
     }
+    public int attack() { //attack of dragon for hard mode
+        return ((int) (Math.random() * 11 + 1)) * getLevel(); //randomly generated
+    }
+    public int easyAttack() { //attack of dragon for easy mode
+        return ((int) (Math.random() * 6 + 1)) * getLevel(); //randomly generated
+    }
     public void dragonInfo() {
         System.out.println( Color.BLUE + "[Health: " + health + "%] ");
         if (health <= 10) {
